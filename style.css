@@ -1,0 +1,47 @@
+#gameboard-container {
+	
+}
+
+.column {
+	display: inline-block;
+	float: left;
+}
+
+.column:nth-child(1){
+  border-left: 50px aqua solid;
+}
+
+.column:nth-child(7){
+  border-right: 50px aqua solid;
+}
+
+.piece-box {
+	width: 80px;
+	height: 80px;
+	background: #e5e500;
+	position: relative;
+	margin: 0;
+}
+
+.piece {
+	width: 72px;
+	height: 72px;
+	left: 5%;
+	top: 5%;
+	border-radius: 50%;
+	border: 1px aqua solid;
+	background: gray;
+	position: absolute;
+}
+
+.red {
+	background: red;
+}
+
+.black {
+	background: black;
+}
+
+
+
+

@@ -6,7 +6,7 @@ $(document).ready( function(){
   var hStreak = 0;
   var dDownCounter = 0;
   var dUpCounter = 0;
-  var gameOver = false;
+  var gameStop = false;
 
   // Build reverse method in jQuery
   jQuery.fn.reverse = function() {
@@ -15,7 +15,7 @@ $(document).ready( function(){
 
   // Click event handler
   $(".column").on( "click", function() {
-  	if(gameOver === false){
+  	if(gameStop === false){
 	  	currentColumn = $(this);
 	    $(this).children().reverse().each( function(){
 	      if( !($(this).children().hasClass( "red" ) || $(this).children().hasClass( "black" ) )) {
@@ -42,6 +42,7 @@ $(document).ready( function(){
   		if(pieces[x] === currentPiece[0]){
   			clearInterval(pieceDropInt);
   			currentPiece.addClass( color );
+	        gameStop = false;
   			checkVertical(currentColumn);
 	        checkHorizontal(currentPiece);
 	        downDiagonal(currentColumn, currentPiece);
@@ -51,6 +52,7 @@ $(document).ready( function(){
   		else {
 	  		$(pieces[x]).addClass(color);
   			x++;
+  			gameStop = true;
   		}
   	}, 50)
   }
@@ -64,7 +66,7 @@ $(document).ready( function(){
     			vCounter++;
 				if(vCounter >= 4){
 					console.log("We have a winner!");
-					gameOver = true;
+					gameStop = true;
 				}
     		}
     		else {
@@ -82,7 +84,7 @@ $(document).ready( function(){
     			hCounter++;
 				if(hCounter >= 4){
 					console.log("We have a winner!");
-					gameOver = true;
+					gameStop = true;
 				}
     	}
     	else {
@@ -113,7 +115,7 @@ $(document).ready( function(){
     		dDownCounter++;
 		    if(dDownCounter >= 4){
 				console.log("We have a winner!");
-				gameOver = true;
+				gameStop = true;
 			}
     	}
 		else {
@@ -144,7 +146,7 @@ $(document).ready( function(){
     		dUpCounter++;
 		    if(dUpCounter >= 4){
 				console.log("We have a winner!");
-				gameOver = true;
+				gameStop = true;
 			}
     	}
 		else {
